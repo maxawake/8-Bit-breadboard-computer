@@ -1,0 +1,23 @@
+#line 1 "/home/max/Nextcloud/Projects/8 Bit Computer/Arduino Firmware/assembler/.vscode/arduino.json"
+{
+  "port": "",
+  "configuration": "cpu=atmega328",
+  "output": "build",
+  "board": "arduino:avr:nano",
+  "programmer": "arduinoasisp",
+  "useProgrammer": false,
+  "optimize_for_debug": false,
+  "configurationRequired": true,
+  "compile_profile": "profile",
+  "monitorPortSettings": {
+    "settings": {
+      "port": "/dev/ttyUSB0",
+      "baudRate": 115200,
+      "lineEnding": "\r\n",
+      "dataBits": 8,
+      "parity": "none",
+      "stopBits": "one"
+    },
+    "profile_name": ""
+  }
+}

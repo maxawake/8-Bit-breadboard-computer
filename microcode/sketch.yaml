@@ -1,0 +1,14 @@
+profiles:
+  profile:
+    fqbn: arduino:avr:nano:cpu=atmega328
+    platforms:
+      - platform: arduino:avr (1.8.6)
+    programmer: ""
+    port_config:
+      baudrate: "57600"
+      lineEnding: "\r\n"
+      bits: "8"
+      parity: none
+      stop_bits: "1"
+    port: /dev/ttyUSB0
+default_profile: profile

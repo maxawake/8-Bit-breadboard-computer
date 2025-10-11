@@ -1,0 +1,9 @@
+{
+  "additionalFiles": "../../..,../../..",
+  "compiler.optimization_flags": "",
+  "customBuildProperties": "",
+  "fqbn": "arduino:avr:nano:cpu=atmega328",
+  "hardwareFolders": "/home/max/.arduino15/packages",
+  "otherLibrariesFolders": "/home/max/Documents/Arduino/libraries",
+  "sketchLocation": "/home/max/Nextcloud/Projects/8 Bit Computer/Arduino Firmware/microcode_flags"
+}
