@@ -1,4 +1,4 @@
-#line 1 "/home/max/Nextcloud/Projects/8 Bit Computer/Arduino Firmware/microcode_flags/microcode_flags.ino"
+#line 1 "/home/max/Repos/8-Bit-breadboard-computer/microcode_flags/microcode_flags.ino"
 #include <Arduino.h>
 
 #define SHIFT_DATA 2
@@ -8,21 +8,21 @@
 #define EEPROM_D7 12
 #define WRITE_ENABLE 13
 
-#line 10 "/home/max/Nextcloud/Projects/8 Bit Computer/Arduino Firmware/microcode_flags/microcode_flags.ino"
+#line 10 "/home/max/Repos/8-Bit-breadboard-computer/microcode_flags/microcode_flags.ino"
 void setAddress(int address, bool outputEnable);
-#line 20 "/home/max/Nextcloud/Projects/8 Bit Computer/Arduino Firmware/microcode_flags/microcode_flags.ino"
+#line 20 "/home/max/Repos/8-Bit-breadboard-computer/microcode_flags/microcode_flags.ino"
 byte readEEPROM(int address);
-#line 36 "/home/max/Nextcloud/Projects/8 Bit Computer/Arduino Firmware/microcode_flags/microcode_flags.ino"
+#line 36 "/home/max/Repos/8-Bit-breadboard-computer/microcode_flags/microcode_flags.ino"
 byte readNLines(int address, int lines);
-#line 53 "/home/max/Nextcloud/Projects/8 Bit Computer/Arduino Firmware/microcode_flags/microcode_flags.ino"
+#line 53 "/home/max/Repos/8-Bit-breadboard-computer/microcode_flags/microcode_flags.ino"
 void writeEEPROM(int address, byte value);
-#line 133 "/home/max/Nextcloud/Projects/8 Bit Computer/Arduino Firmware/microcode_flags/microcode_flags.ino"
+#line 133 "/home/max/Repos/8-Bit-breadboard-computer/microcode_flags/microcode_flags.ino"
 void initUCode();
-#line 152 "/home/max/Nextcloud/Projects/8 Bit Computer/Arduino Firmware/microcode_flags/microcode_flags.ino"
+#line 160 "/home/max/Repos/8-Bit-breadboard-computer/microcode_flags/microcode_flags.ino"
 void setup();
-#line 205 "/home/max/Nextcloud/Projects/8 Bit Computer/Arduino Firmware/microcode_flags/microcode_flags.ino"
+#line 213 "/home/max/Repos/8-Bit-breadboard-computer/microcode_flags/microcode_flags.ino"
 void loop();
-#line 10 "/home/max/Nextcloud/Projects/8 Bit Computer/Arduino Firmware/microcode_flags/microcode_flags.ino"
+#line 10 "/home/max/Repos/8-Bit-breadboard-computer/microcode_flags/microcode_flags.ino"
 void setAddress(int address, bool outputEnable)
 {
     shiftOut(SHIFT_DATA, SHIFT_CLOCK, MSBFIRST, (address >> 8) | (outputEnable ? 0x00 : 0x80));
@@ -105,7 +105,7 @@ void writeEEPROM(int address, byte value)
 #define RI  0b0010000000000000
 #define RO  0b0001000000000000
 #define II  0b0000100000000000
-#define IO  0b0000010000000000
+#define TR  0b0000010000000000
 #define AI  0b0000001000000000
 #define AO  0b0000000100000000
 #define EO  0b0000000010000000
@@ -126,22 +126,22 @@ void writeEEPROM(int address, byte value)
 #define JZ 0b1000
 
 uint16_t UCODE_TEMPLATE[16][8] = {
-  { MI|CO,  RO|II|CE,  0,      0,      0,           0, 0, 0 },   // 0000 - NOP
-  { MI|CO,  RO|II|CE,  IO|MI,  RO|AI,  0,           0, 0, 0 },   // 0001 - LDA
-  { MI|CO,  RO|II|CE,  IO|MI,  RO|BI,  EO|AI|FI,    0, 0, 0 },   // 0010 - ADD
-  { MI|CO,  RO|II|CE,  IO|MI,  RO|BI,  EO|AI|SU|FI, 0, 0, 0 },   // 0011 - SUB
-  { MI|CO,  RO|II|CE,  IO|MI,  AO|RI,  0,           0, 0, 0 },   // 0100 - STA
-  { MI|CO,  RO|II|CE,  IO|AI,  0,      0,           0, 0, 0 },   // 0101 - LDI
-  { MI|CO,  RO|II|CE,  IO|J,   0,      0,           0, 0, 0 },   // 0110 - JMP
-  { MI|CO,  RO|II|CE,  0,      0,      0,           0, 0, 0 },   // 0111 - JC
-  { MI|CO,  RO|II|CE,  0,      0,      0,           0, 0, 0 },   // 1000 - JZ
-  { MI|CO,  RO|II|CE,  0,      0,      0,           0, 0, 0 },   // 1001
-  { MI|CO,  RO|II|CE,  0,      0,      0,           0, 0, 0 },   // 1010
-  { MI|CO,  RO|II|CE,  0,      0,      0,           0, 0, 0 },   // 1011
-  { MI|CO,  RO|II|CE,  0,      0,      0,           0, 0, 0 },   // 1100
-  { MI|CO,  RO|II|CE,  0,      0,      0,           0, 0, 0 },   // 1101
-  { MI|CO,  RO|II|CE,  AO|OI,  0,      0,           0, 0, 0 },   // 1110 - OUT
-  { MI|CO,  RO|II|CE,  HLT,    0,      0,           0, 0, 0 },   // 1111 - HLT
+  { MI|CO,  RO|II|CE,  TR,     0,        0,     0,            0,  0 },   // 0000 - NOP
+  { MI|CO,  RO|II|CE,  MI|CO,  MI|RO|CE, RO|AI, TR,           0,  0 },   // 0001 - LDA
+  { MI|CO,  RO|II|CE,  MI|CO,  MI|RO|CE, RO|BI, EO|AI|FI,     TR, 0 },   // 0010 - ADD
+  { MI|CO,  RO|II|CE,  MI|CO,  MI|RO|CE, RO|BI, EO|AI|SU|FI,  TR, 0 },   // 0011 - SUB
+  { MI|CO,  RO|II|CE,  MI|CO,  MI|RO|CE, AO|RI, TR,           0,  0 },   // 0100 - STA
+  { MI|CO,  RO|II|CE,  MI|CO,  RO|AI|CE, TR,    0,            0,  0 },   // 0101 - LDI
+  { MI|CO,  RO|II|CE,  MI|CO,  RO|J,     TR,    0,            0,  0 },   // 0110 - JMP
+  { MI|CO,  RO|II|CE,  CE,     TR,       0,     0,            0,  0 },   // 0111 - JC
+  { MI|CO,  RO|II|CE,  CE,     TR,       0,     0,            0,  0 },   // 1000 - JZ
+  { MI|CO,  RO|II|CE,  TR,     0,        0,     0,            0,  0 },   // 1001 - NOP
+  { MI|CO,  RO|II|CE,  TR,     0,        0,     0,            0,  0 },   // 1010 - NOP
+  { MI|CO,  RO|II|CE,  TR,     0,        0,     0,            0,  0 },   // 1011 - NOP
+  { MI|CO,  RO|II|CE,  TR,     0,        0,     0,            0,  0 },   // 1100 - NOP
+  { MI|CO,  RO|II|CE,  TR,     0,        0,     0,            0,  0 },   // 1101 - NOP
+  { MI|CO,  RO|II|CE,  AO|OI,  TR,       0,     0,            0,  0 },   // 1110 - OUT
+  { MI|CO,  RO|II|CE,  HLT,    0,       0,      0,            0,  0 },   // 1111 - HLT
 };
 
 uint16_t ucode[4][16][8];
@@ -153,16 +153,24 @@ void initUCode()
 
     // ZF = 0, CF = 1
     memcpy(ucode[FLAGS_Z0C1], UCODE_TEMPLATE, sizeof(UCODE_TEMPLATE));
-    ucode[FLAGS_Z0C1][JC][2] = IO | J;
+    ucode[FLAGS_Z0C1][JC][2] = MI|CO;
+    ucode[FLAGS_Z0C1][JC][3] = RO|J;
+    ucode[FLAGS_Z0C1][JC][4] = TR;
 
     // ZF = 1, CF = 0
     memcpy(ucode[FLAGS_Z1C0], UCODE_TEMPLATE, sizeof(UCODE_TEMPLATE));
-    ucode[FLAGS_Z1C0][JZ][2] = IO | J;
+    ucode[FLAGS_Z1C0][JZ][2] = MI|CO;
+    ucode[FLAGS_Z1C0][JZ][3] = RO|J;
+    ucode[FLAGS_Z1C0][JZ][4] = TR;
 
     // ZF = 1, CF = 1
     memcpy(ucode[FLAGS_Z1C1], UCODE_TEMPLATE, sizeof(UCODE_TEMPLATE));
-    ucode[FLAGS_Z1C1][JC][2] = IO | J;
-    ucode[FLAGS_Z1C1][JZ][2] = IO | J;
+    ucode[FLAGS_Z1C1][JC][2] = MI|CO;
+    ucode[FLAGS_Z1C1][JZ][2] = MI|CO;
+    ucode[FLAGS_Z1C1][JC][3] = RO|J;
+    ucode[FLAGS_Z1C1][JZ][3] = RO|J;
+    ucode[FLAGS_Z1C1][JC][4] = TR;
+    ucode[FLAGS_Z1C1][JZ][4] = TR;
 }
 
 void setup()

@@ -7,9 +7,9 @@
   },
   {
     "compile": {
-      "source_path": "/home/max/Nextcloud/Projects/8 Bit Computer/Arduino Firmware/microcode_flags/build/build_profile/sketch/microcode_flags.ino.cpp",
-      "object_path": "/home/max/Nextcloud/Projects/8 Bit Computer/Arduino Firmware/microcode_flags/build/build_profile/sketch/microcode_flags.ino.cpp.o",
-      "depfile_path": "/home/max/Nextcloud/Projects/8 Bit Computer/Arduino Firmware/microcode_flags/build/build_profile/sketch/microcode_flags.ino.cpp.d"
+      "source_path": "/home/max/Repos/8-Bit-breadboard-computer/microcode_flags/build/build_profile/sketch/microcode_flags.ino.cpp",
+      "object_path": "/home/max/Repos/8-Bit-breadboard-computer/microcode_flags/build/build_profile/sketch/microcode_flags.ino.cpp.o",
+      "depfile_path": "/home/max/Repos/8-Bit-breadboard-computer/microcode_flags/build/build_profile/sketch/microcode_flags.ino.cpp.d"
     },
     "compile_task": {
       "args": [
@@ -38,7 +38,7 @@
         "-DARDUINO_ARCH_AVR",
         "-I/home/max/.arduino15/internal/arduino_avr_1.8.6_78e0815c6047bc54/cores/arduino",
         "-I/home/max/.arduino15/internal/arduino_avr_1.8.6_78e0815c6047bc54/variants/eightanaloginputs",
-        "/home/max/Nextcloud/Projects/8 Bit Computer/Arduino Firmware/microcode_flags/build/build_profile/sketch/microcode_flags.ino.cpp",
+        "/home/max/Repos/8-Bit-breadboard-computer/microcode_flags/build/build_profile/sketch/microcode_flags.ino.cpp",
         "-o",
         "/dev/null"
       ]
