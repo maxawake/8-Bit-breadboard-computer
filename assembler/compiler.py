@@ -1,24 +1,24 @@
 # simple compiler for 8-bit computer
 
 INSTRUCTIONS = {
-    "NOP": 0b0000,
-    "LDA": 0b0001,
-    "ADD": 0b0010,
-    "SUB": 0b0011,
-    "STA": 0b0100,
-    "LDI": 0b0101,
-    "JMP": 0b0110,
-    "JC": 0b0111,
-    "JZ": 0b1000,
-    "OUT": 0b1110,
-    "HLT": 0b1111,
+    "NOP": 0b00000000,
+    "LDA": 0b00010000,
+    "ADD": 0b00100000,
+    "SUB": 0b00110000,
+    "STA": 0b01000000,
+    "LDI": 0b01010000,
+    "JMP": 0b01100000,
+    "JC": 0b01110000,
+    "JZ": 0b10000000,
+    "OUT": 0b11100000,
+    "HLT": 0b11110000,
     "VAR": None,  # special directive for defining data
 }
 
 
 def assemble(assembly_code):
     lines = assembly_code.strip().splitlines()
-    machine_code = [0] * 16  # Initialize memory with 16 bytes
+    machine_code = [0] * 256  # Initialize memory with 256 bytes
     pc = 0  # Program counter
 
     for line in lines:
@@ -41,46 +41,60 @@ def assemble(assembly_code):
                 raise ValueError(f"Value out of range (0-255): {value}")
             machine_code[addr] = value
         else:
-            # Handle regular instructions
-            opcode = INSTRUCTIONS[instr] << 4
-            if len(parts) > 1:
-                operand = int(parts[1])
-                if operand < 0 or operand > 15:
-                    raise ValueError(f"Operand out of range (0-15): {operand}")
-                opcode |= operand
+            # Handle regular instructions - opcode and operand in separate bytes
+            opcode = INSTRUCTIONS[instr]
             machine_code[pc] = opcode
             pc += 1
+
+            # If instruction has an operand, store it as the next byte
+            if len(parts) > 1:
+                operand = int(parts[1])
+                if operand < 0 or operand > 255:
+                    raise ValueError(f"Operand out of range (0-255): {operand}")
+                machine_code[pc] = operand
+                pc += 1
 
     return machine_code
 
 
 if __name__ == "__main__":
     sample_code = """
-    VAR 12 1
-    VAR 13 0
-    VAR 14 8
-    VAR 15 8
-    LDA 14
-    SUB 12
-    JC 6
-    LDA 13
+    VAR 24 1
+    VAR 26 0
+    VAR 28 8
+    VAR 30 8
+    LDA 28
+    SUB 24
+    JC 10
+    LDA 26
     OUT
     HLT
-    STA 14
-    LDA 13
-    ADD 15
-    STA 13
+    STA 28
+    LDA 26
+    ADD 30
+    STA 26
     JMP 0
     """
     machine_code = assemble(sample_code)
-    for addr, code in enumerate(machine_code):
-        # Decode the instruction for display
+    i = 0
+    while i < len(machine_code):
+        code = machine_code[i]
         if code == 0:
-            instr_name = "NOP"
+            print(f"0b{code:08b}, // {i} - NOP")
+            i += 1
         else:
-            opcode = (code >> 4) & 0xF
-            operand = code & 0xF
-            instr_name = next((name for name, op in INSTRUCTIONS.items() if op == opcode), "UNKNOWN")
-            if operand > 0:
-                instr_name += f" {operand}"
-        print(f"0b{code:08b}, // {addr} - {instr_name}")
+            # Find instruction name
+            instr_name = next((name for name, op in INSTRUCTIONS.items() if op == code), None)
+            if instr_name:
+                # Check if next byte is an operand
+                if i + 1 < len(machine_code) and instr_name in ["LDA", "ADD", "SUB", "STA", "LDI", "JMP", "JC", "JZ"]:
+                    operand = machine_code[i + 1]
+                    print(f"0b{code:08b}, // {i} - ISTR: {instr_name}")
+                    print(f"0b{operand:08b}, // {i + 1} - MEM: {operand}")
+                    i += 2
+                else:
+                    print(f"0b{code:08b}, // {i} - {instr_name}")
+                    i += 1
+            else:
+                print(f"0b{code:08b}, // {i} - DATA")
+                i += 1

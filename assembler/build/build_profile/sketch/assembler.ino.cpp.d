@@ -1,5 +1,5 @@
-/home/max/Nextcloud/Projects/8\ Bit\ Computer/Arduino\ Firmware/assembler/build/build_profile/sketch/assembler.ino.cpp.o: \
- /home/max/Nextcloud/Projects/8\ Bit\ Computer/Arduino\ Firmware/assembler/build/build_profile/sketch/assembler.ino.cpp \
+/home/max/Repos/8-Bit-breadboard-computer/assembler/build/build_profile/sketch/assembler.ino.cpp.o: \
+ /home/max/Repos/8-Bit-breadboard-computer/assembler/build/build_profile/sketch/assembler.ino.cpp \
  /home/max/.arduino15/internal/arduino_avr_1.8.6_78e0815c6047bc54/cores/arduino/Arduino.h \
  /home/max/.arduino15/internal/arduino_avr_1.8.6_78e0815c6047bc54/cores/arduino/binary.h \
  /home/max/.arduino15/internal/arduino_avr_1.8.6_78e0815c6047bc54/cores/arduino/WCharacter.h \
