@@ -27,9 +27,9 @@
 void setAddress(int address);
 #line 37 "/home/max/Repos/8-Bit-breadboard-computer/assembler/assembler.ino"
 void setData(byte value);
-#line 126 "/home/max/Repos/8-Bit-breadboard-computer/assembler/assembler.ino"
+#line 114 "/home/max/Repos/8-Bit-breadboard-computer/assembler/assembler.ino"
 void setup();
-#line 186 "/home/max/Repos/8-Bit-breadboard-computer/assembler/assembler.ino"
+#line 174 "/home/max/Repos/8-Bit-breadboard-computer/assembler/assembler.ino"
 void loop();
 #line 25 "/home/max/Repos/8-Bit-breadboard-computer/assembler/assembler.ino"
 void setAddress(int address)
@@ -95,42 +95,30 @@ byte addition[] = {
 // };
 
 byte multiplication[] = {
-    0b00010000, // 0 - ISTR: LDA
-    0b00011100, // 1 - MEM: 28
-    0b00110000, // 2 - ISTR: SUB
-    0b00011000, // 3 - MEM: 24
-    0b01110000, // 4 - ISTR: JC
-    0b00001010, // 5 - MEM: 10
-    0b00010000, // 6 - ISTR: LDA
-    0b00011010, // 7 - MEM: 26
-    0b11100000, // 8 - OUT
-    0b11110000, // 9 - HLT
-    0b01000000, // 10 - ISTR: STA
-    0b00011100, // 11 - MEM: 28
-    0b00010000, // 12 - ISTR: LDA
-    0b00011010, // 13 - MEM: 26
-    0b00100000, // 14 - ISTR: ADD
-    0b00011110, // 15 - MEM: 30
-    0b01000000, // 16 - ISTR: STA
-    0b00011010, // 17 - MEM: 26
-    0b01100000, // 18 - ISTR: JMP
-    0b00000000, // 19 - MEM: 0
+    0b00010000, // 0 - ISTR: lda
+    0b00010111, // 1 - MEM: 23
+    0b00100000, // 2 - ISTR: add
+    0b00010110, // 3 - MEM: 22
+    0b01000000, // 4 - ISTR: sta
+    0b00010101, // 5 - MEM: 21
+    0b00010000, // 6 - ISTR: lda
+    0b00010110, // 7 - MEM: 22
+    0b01000000, // 8 - ISTR: sta
+    0b00010111, // 9 - MEM: 23
+    0b00010000, // 10 - ISTR: lda
+    0b00010101, // 11 - MEM: 21
+    0b01000000, // 12 - ISTR: sta
+    0b00010110, // 13 - MEM: 22
+    0b11100000, // 14 - out
+    0b01100000, // 15 - ISTR: jmp
+    0b00000000, // 16 - MEM: 0
+    0b00000000, // 17 - NOP
+    0b00000000, // 18 - NOP
+    0b00000000, // 19 - NOP
     0b00000000, // 20 - NOP
     0b00000000, // 21 - NOP
-    0b00000000, // 22 - NOP
+    0b00000001, // 22 - DATA
     0b00000000, // 23 - NOP
-    0b00000001, // 24 - DATA
-    0b00000000, // 25 - NOP
-    0b00000000, // 26 - NOP
-    0b00000000, // 27 - NOP
-    0b00001000, // 28 - DATA
-    0b00000000, // 29 - NOP
-    0b00001000, // 30 - DATA
-    0b00000000, // 31 - NOP
-    0b00000000, // 32 - NOP
-    0b00000000, // 33 - NOP
-    0b00000000, // 34 - NOP
-    0b00000000, // 35 - NOP
 };
 
 void setup()
