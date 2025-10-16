@@ -1,4 +1,4 @@
-/home/max/Nextcloud/Projects/8\ Bit\ Computer/Arduino\ Firmware/eeprom_writer/build/core/wiring_shift.c.o: \
+/home/max/Repos/8-Bit-breadboard-computer/assembler/build/core/wiring_shift.c.o: \
  /home/max/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/wiring_shift.c \
  /home/max/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/wiring_private.h \
  /home/max/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/Arduino.h \

@@ -1,4 +1,4 @@
-/home/max/Nextcloud/Projects/8\ Bit\ Computer/Arduino\ Firmware/eeprom_writer/build/core/IPAddress.cpp.o: \
+/home/max/Repos/8-Bit-breadboard-computer/assembler/build/core/IPAddress.cpp.o: \
  /home/max/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/IPAddress.cpp \
  /home/max/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/Arduino.h \
  /home/max/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/binary.h \

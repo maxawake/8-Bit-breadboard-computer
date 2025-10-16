@@ -1,9 +1,0 @@
-{
-  "additionalFiles": "../../..,../../..",
-  "compiler.optimization_flags": "",
-  "customBuildProperties": "",
-  "fqbn": "arduino:avr:nano:cpu=atmega328",
-  "hardwareFolders": "/home/max/.arduino15/packages",
-  "otherLibrariesFolders": "/home/max/Documents/Arduino/libraries",
-  "sketchLocation": "/home/max/Repos/8-Bit-breadboard-computer/assembler"
-}

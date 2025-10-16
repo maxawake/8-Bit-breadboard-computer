@@ -1,13 +1,13 @@
 {
   "port": "",
-  "configuration": "cpu=atmega328",
+  "configuration": "USBMode=default,PartitionScheme=default,PinNumbers=default",
   "output": "build",
-  "board": "arduino:avr:nano",
+  "board": "arduino:esp32:nano_nora",
   "programmer": "arduinoasisp",
   "useProgrammer": false,
   "optimize_for_debug": false,
   "configurationRequired": true,
-  "compile_profile": "profile",
+  "compile_profile": "esp32",
   "monitorPortSettings": {
     "settings": {
       "port": "/dev/ttyUSB0",

@@ -1,4 +1,4 @@
-/home/max/Nextcloud/Projects/8\ Bit\ Computer/Arduino\ Firmware/eeprom_writer/build/core/PluggableUSB.cpp.o: \
+/home/max/Repos/8-Bit-breadboard-computer/assembler/build/core/PluggableUSB.cpp.o: \
  /home/max/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/PluggableUSB.cpp \
  /home/max/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/USBAPI.h \
  /home/max/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/Arduino.h \

@@ -1,11 +1,10 @@
-#line 1 "/home/max/Repos/8-Bit-breadboard-computer/assembler/.vscode/c_cpp_properties.json"
 {
   "configurations": [
     {
       "name": "Arduino",
       "includePath": [
         "/home/max/Documents/Arduino/libraries/**",
-        "/home/max/Repos/8-Bit-breadboard-computer/assembler/**"
+        "/home/max/Repos/8-Bit-breadboard-computer/lcd_display/**"
       ],
       "forcedInclude": [],
       "compilerPath": "/home/max/.arduino15/internal/arduino_avr-gcc_7.3.0-atmel3.6.1-arduino7_fc423089e09cfcab/bin/avr-g++",
@@ -31,9 +30,9 @@
         "-DARDUINO_ARCH_AVR",
         "-I/home/max/.arduino15/internal/arduino_avr_1.8.6_78e0815c6047bc54/cores/arduino",
         "-I/home/max/.arduino15/internal/arduino_avr_1.8.6_78e0815c6047bc54/variants/eightanaloginputs",
-        "/home/max/Repos/8-Bit-breadboard-computer/assembler/build/build_profile/sketch/assembler.ino.cpp",
+        "/home/max/Repos/8-Bit-breadboard-computer/lcd_display/build/build_profile/sketch/lcd_display.ino.cpp",
         "-o",
-        "/home/max/Repos/8-Bit-breadboard-computer/assembler/build/build_profile/sketch/assembler.ino.cpp.o"
+        "/home/max/Repos/8-Bit-breadboard-computer/lcd_display/build/build_profile/sketch/lcd_display.ino.cpp.o"
       ],
       "defines": [
         "F_CPU=16000000L",
